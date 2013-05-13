@@ -1,0 +1,12 @@
+
+<h3>Published Posts</h3>
+<% for post in @published_posts %>
+	<%= post.title %> | <%= post.publish_on.strftime("%b %-d, %Y") %> | <%= link_to "Edit", edit_post_path(post) %>
+<% end %>
+<br>
+<h3>Drafts</h3>
+<% for post in @draft_posts %>
+	<%= post.title %> | Draft created on <%= post.created_at.strftime("%b %-d, %Y") %> | <%= link_to "Edit", edit_post_path(post) %>
+<% end %>
+<br>	
+<%= link_to "New Post", new_post_path %>

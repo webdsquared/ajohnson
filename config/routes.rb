@@ -1,4 +1,10 @@
 Ajohnson::Application.routes.draw do
+  resources :posts
+  resources :sessions
+
+  match 'login', to: 'sessions#new', as: 'login'
+  match 'logout', to: 'sessions#destroy', as: 'logout'
+
   root to: 'pages#home'
 
   # The priority is based upon order of creation:

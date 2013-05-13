@@ -1,0 +1,6 @@
+<%= form_for @post do |f| %>
+	<%= f.text_field :title, placeholder: "Title" %><br>
+	<%= f.text_area :body, placeholder: "Enter text..." %><br>
+	<%= f.submit "Publish", name: "publish" %> 
+	<%= f.submit "Save as Draft", name: "save_as_draft" %>
+<% end %>
