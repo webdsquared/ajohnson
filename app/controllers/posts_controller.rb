@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if params['publish']
       @post.published = true
-      @post.publish_on = Time.now if @post.publish_on.blank?
+      @post.publish_on = Time.now unless @post.publish_on.present?
       @post.update_attributes(params[:post])
       redirect_to posts_path
     elsif params['save_as_draft']
