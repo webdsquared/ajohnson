@@ -1,11 +1,15 @@
 Ajohnson::Application.routes.draw do
+  resources :categories
+
+  mount RedactorRails::Engine => '/redactor_rails'
+  match "posts/category" => "posts#category"
   resources :posts
   resources :sessions
 
   match 'login', to: 'sessions#new', as: 'login'
   match 'logout', to: 'sessions#destroy', as: 'logout'
 
-  root to: 'pages#home'
+  root to: 'posts#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

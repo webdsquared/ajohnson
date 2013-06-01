@@ -1,6 +1,55 @@
-<%= form_for @post do |f| %>
-	<%= f.text_field :title, placeholder: "Title" %><br>
-	<%= f.text_area :body, placeholder: "Enter text..." %><br>
-	<%= f.submit "Publish", name: "publish" %> 
-	<%= f.submit "Save as Draft", name: "save_as_draft" %>
-<% end %>
+<%= render 'partials/admin_header' %>
+<div class="manage-container">
+
+
+	<div class="post-edit-container">
+		<div class="container">
+			<%= form_for @post do |f| %>
+			<div class="row">
+				<div class="span8">
+					<div class="post-form-container-header">
+						<h5>Add Post</h5>
+					</div>
+					<div class="post-form-container">
+						<label><h4>Post Title:</h4></label>
+						<%= f.text_field :title, class: "span7" %><br>
+						<label><h4>Post Body:</h4></label>
+						<%= f.text_area :body, class: "redactor", id: "redactor" %><br>
+						<%= f.submit "Publish to Blog", name: "publish", class: "btn btn-small btn-primary" %>&nbsp;&nbsp;
+						<%= f.submit "Save as Draft", name: "save_as_draft", class: "btn btn-small" %>
+					</div>
+				</div>
+				
+
+				<div class="span4"> 
+					<div class="post-form-container-header">
+						<h5>Add Category</h5>
+					</div>
+					<div class="post-form-container">
+
+						<div id="categories">
+							
+							<%= render 'category_list' %>
+						</div>
+			
+				<% end %>
+
+					<!-- NEW FORM IDEA -->
+						<div class="add-cat-form">
+						<%= form_for Category.new, remote: true do |f| %>
+							<label><p class="cat-add">Add a new category:</p></label>
+							<%= f.text_field :name %><br>
+							<%= f.submit "Add Category", class: "btn btn-small btn-primary" %>
+						<% end %>
+						</div>
+				<!-- -->
+
+					</div>
+				</div>
+
+
+			</div>	
+		</div>
+	</div>
+</div>
+

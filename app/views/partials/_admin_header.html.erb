@@ -1,0 +1,18 @@
+<% if admin? %>
+<div class="admin-container">
+	<div class="container">
+		<div class="row">
+			<div class="span6">
+				<h5>
+					<%= link_to "Main Site", root_path, class: "admin-link" %> |
+					<%= link_to "Add Post", new_post_path, class: "admin-link" %> |
+					<%= link_to "Manage Categories", new_category_path, class: "admin-link" %>
+				</h5>
+			</div>
+			<div class="span6">
+				<h5 class="pull-right"><%= link_to "Logout", '/logout', class: "admin-link" %></h5>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>

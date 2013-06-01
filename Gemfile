@@ -21,10 +21,15 @@ group :assets do
   gem "therubyracer"
 	gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 	gem "twitter-bootstrap-rails"
+	#gem 'chosen-rails'
 end
 
 gem 'jquery-rails'
 gem "nifty-generators", :group => :development
+gem 'redactor-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+
 
 
 # To use ActiveModel has_secure_password

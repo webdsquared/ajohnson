@@ -1,2 +1,29 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div id="wrapper">
+<div class="container-narrow">
+		
+	
+	<div class="post-boxes">
+		<div class="row-fluid">
+			<div class="span3 post-detail">
+				<p class="post-detail"><i class="icon-calendar"></i>&nbsp;&nbsp;<%= @post.publish_on.strftime("%b %-d, %Y") %></p>
+				<p class="post-detail"><i class="icon-tags"></i>&nbsp;<em><%= @post.categories.collect { |cat| cat.name }.join(", ") %></em></p>
+			</div>
+			<div class="span9">
+				<h3 class="post-title"><%= link_to @post.title %></h3>
+				<%= sanitize @post.body %>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<div class="footer">
+	<div class="container-narrow">
+		<div class="row-fluid">
+			<div class="span9"></div>
+			<div class="span3"></div>
+		</div>
+	</div>
+</div>
+</div>
+

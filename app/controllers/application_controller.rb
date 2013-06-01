@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  
+
   def authorize 
   	unless admin?
   		redirect_to root_path
