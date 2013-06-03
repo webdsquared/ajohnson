@@ -1,0 +1,31 @@
+<% for post in @published_posts %>
+<div class="container">
+	<div class="row">
+		<div class="span1">
+			<div class="date-container">
+				<p>
+					<%= post.publish_on.strftime("%b %-d") %><br>
+					<%= post.publish_on.strftime("%Y") %>
+				</p>
+			</div>
+		</div>
+		<div class="span11">
+			<div class="title-container">
+				<%= post.title %>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="span1">
+			<div class="line-container">
+
+			</div>
+		</div>
+		<div class="span11">
+			<div class="body-container"
+		</div>
+	</div>
+</div>
+<% end %>

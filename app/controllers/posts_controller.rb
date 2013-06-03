@@ -63,6 +63,7 @@ class PostsController < ApplicationController
   end
 
   def category
-    @published_posts = Post.where(published: true).search(params[:search])
+    @published_posts = Post.joins(:categories).where("published = 'true' AND categories.id = ?", params[:id] )
+    @categories = Category.all
   end
 end

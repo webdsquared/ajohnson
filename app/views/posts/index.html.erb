@@ -27,7 +27,7 @@
 		        </div>
 						<p class="side-title">Categories</p>
 						<% for category in @categories %>
-							<p><%= category.name %> <span class="blue-text">(<%= category.posts.where(published: true).count %>)</span></p>
+							<p><%= link_to category.name, { action: 'category', id: category.id } %> <span class="blue-text">(<%= category.posts.where(published: true).count %>)</span></p>
 						<% end %>
 					</div>
 					<div class="span6">
@@ -35,7 +35,17 @@
 						<% for post in @published_posts %>
 						<div class="post-container">
 							<p class="p-title"><%= link_to post.title, post, class: "post-link" %></p>
-							<p class="p-detail"><em>Posted on <%= post.publish_on.strftime("%b %-d, %Y") %> | Archived in <%= post.categories.	collect 	{ |cat| cat.name }.join(", ") %></em></p>
+							
+
+							<p class="p-detail"><em>Posted on <%= post.publish_on.strftime("%b %-d, %Y") %> | 
+								Archived in <%= post.categories.collect { |category| link_to category.name, {action: 'category', id: category.id} }.join(", ").html_safe %></em></p>
+							
+						
+
+						
+
+
+
 							<div class="editor-text">
 								<%= sanitize truncate(post.body, length: 300, separator: ' ') %>
 								<% if post.body.length > 300 %>

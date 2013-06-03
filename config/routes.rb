@@ -1,4 +1,6 @@
 Ajohnson::Application.routes.draw do
+
+  get 'pages/new_page'
   resources :categories
 
   mount RedactorRails::Engine => '/redactor_rails'
