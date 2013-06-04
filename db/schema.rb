@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523215801) do
+ActiveRecord::Schema.define(:version => 20130604195219) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -34,7 +34,10 @@ ActiveRecord::Schema.define(:version => 20130523215801) do
     t.datetime "updated_at", :null => false
     t.string   "status"
     t.boolean  "published"
+    t.string   "slug"
   end
+
+  add_index "posts", ["slug"], :name => "index_posts_on_slug"
 
   create_table "redactor_assets", :force => true do |t|
     t.integer  "user_id"

@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
   
-  before_filter :authorize, except: [:index, :show]
+  before_filter :authorize, except: [:index, :show, :category]
 
   def index
   	@posts = Post.all
     @published_posts = Post.search(params[:search])
     @draft_posts = Post.where(published: false)
     @categories = Category.all
+    @recent_posts = Post.where(published: true).order("publish_on DESC").limit(4)
     
   end
 
@@ -14,6 +15,8 @@ class PostsController < ApplicationController
   	@post = Post.find(params[:id])
     @post_list = Post.order("publish_on DESC").limit(5).where("published = ?", true)
     @published_posts = Post.where(published: true)
+    @recent_posts = Post.where(published: true).order("publish_on DESC").limit(4)
+    @categories = Category.all
   end
 
   def new

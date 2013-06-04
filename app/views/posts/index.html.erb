@@ -5,10 +5,12 @@
 		<div class="header">
 			<div class="container">
 				<div class="row">
-					<div class="span7">&nbsp;</div>
-					<div class="span5">
+					<div class="span7">
 						<p class="myname">aaronjohnson</p>
 					</div>
+					</div>
+					<div class="span5">
+						&nbsp;
 				</div>
 			</div>
 		</div>
@@ -21,31 +23,28 @@
 							<%= form_tag posts_path, method: "get" do %>
 		          <div class="input-append">
 		            <%= text_field_tag :search, params[:search], class: "span2" %>
-		            <%= submit_tag "Search", name: nil, class: "btn" %>       
+		            <button type="submit" class="btn"><i class="icon-search"></i></button>      
 		          </div>
 		          <% end %> 
 		        </div>
+		        <p class="side-title">Recent Posts</p>
+						<% for post in @recent_posts %>
+							<p><%= link_to post.title, post %></p>
+						<% end %>
+						<br><br>
 						<p class="side-title">Categories</p>
 						<% for category in @categories %>
 							<p><%= link_to category.name, { action: 'category', id: category.id } %> <span class="blue-text">(<%= category.posts.where(published: true).count %>)</span></p>
 						<% end %>
+						
 					</div>
 					<div class="span6">
 						<% if @published_posts.present? %>
 						<% for post in @published_posts %>
 						<div class="post-container">
 							<p class="p-title"><%= link_to post.title, post, class: "post-link" %></p>
-							
-
 							<p class="p-detail"><em>Posted on <%= post.publish_on.strftime("%b %-d, %Y") %> | 
 								Archived in <%= post.categories.collect { |category| link_to category.name, {action: 'category', id: category.id} }.join(", ").html_safe %></em></p>
-							
-						
-
-						
-
-
-
 							<div class="editor-text">
 								<%= sanitize truncate(post.body, length: 300, separator: ' ') %>
 								<% if post.body.length > 300 %>
