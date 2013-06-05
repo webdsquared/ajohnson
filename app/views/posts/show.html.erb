@@ -2,8 +2,8 @@
 	<div class="content">
 		<%= render 'partials/admin_header' %>
 		<div class="header">
-			<div class="container">
-				<div class="row">
+			<div class="container-narrow">
+				<div class="row-fluid">
 					<div class="span7">
 						<p class="myname">aaronjohnson</p>
 					</div>
@@ -14,14 +14,14 @@
 			</div>
 		</div>
 		<div class="main-container">
-			<div class="container">
-				<div class="row">
+			<div class="container-narrow">
+				<div class="row-fluid">
 					<div class="span3">
 						<div class="search-box">
 							<p class="side-title">Search</p>
 							<%= form_tag posts_path, method: "get" do %>
 		          <div class="input-append">
-		            <%= text_field_tag :search, params[:search], class: "span2" %>
+		            <%= text_field_tag :search, params[:search], class: "span10" %>
 		            <button type="submit" class="btn"><i class="icon-search"></i></button>      
 		          </div>
 		          <% end %> 
@@ -33,11 +33,13 @@
 						<br><br>
 						<p class="side-title">Categories</p>
 						<% for category in @categories %>
+							<% unless category.posts.count < 1 %>
 							<p><%= link_to category.name, { action: 'category', id: category.id } %> <span class="blue-text">(<%= category.posts.where(published: true).count %>)</span></p>
+							<% end %>
 						<% end %>
 						
 					</div>
-					<div class="span6">
+					<div class="span9">
 						
 						
 						<div class="post-container">
@@ -53,19 +55,14 @@
 						
 						
 					</div>
-					<div class="span3">
-						<div class="about-container">
-							<p class="side-title">About</p>
-							<p>At saepe animal dolorum sit, mel cibo deserunt eu, eam nobis oratio postea et. Inermis commune tacimates ad qui. 		An velit dolorum ius, laudem quaeque vis no, ludus soluta consulatu te pri. Ex mea amet illud, mea in sale liber 		primis.</p>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="footer">
-		<div class="container">
-			<div class="row">
+		<div class="container-narrow">
+			<div class="row-fluid">
 				<div class="span6">
 					<p class="ftr-text">&copy; <%= Date.today.strftime("%Y") %> Aaron Johnson. All rights reserved.</p>
 				</div>

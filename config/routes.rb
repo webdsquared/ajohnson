@@ -1,6 +1,8 @@
 Ajohnson::Application.routes.draw do
 
   get 'pages/new_page'
+  match 'dashboard', to: "pages#dashboard", as: "dashboard"
+  get 'pages/dashboard'
   resources :categories
 
   mount RedactorRails::Engine => '/redactor_rails'

@@ -29,8 +29,9 @@ gem "nifty-generators", :group => :development
 gem 'redactor-rails'
 gem 'carrierwave'
 gem 'mini_magick'
-
+gem 'kaminari'
 gem 'friendly_id'
+gem 'bootstrap_kaminari'
 
 
 # To use ActiveModel has_secure_password
