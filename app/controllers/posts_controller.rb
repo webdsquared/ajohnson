@@ -6,9 +6,9 @@ class PostsController < ApplicationController
   	@posts = Post.all
     @published_posts = Post.search(params[:search])
     if @published_posts.class == Array
-      @published_posts = Kaminari.paginate_array(@posts).page(params[:page]).per(1)
+      @published_posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
     else
-      @published_posts = @published_posts.page(params[:page]).per(1)
+      @published_posts = @published_posts.page(params[:page]).per(5)
     end
     @draft_posts = Post.where(published: false)
     @categories = Category.all

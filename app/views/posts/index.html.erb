@@ -3,10 +3,12 @@
 	<div class="content">
 		<%= render 'partials/admin_header' %>
 		<div class="header">
-			<div class="container-narrow">
+			<div class="container-narrow b-border">
 				<div class="row-fluid">
 					<div class="span7">
-						<p class="myname">aaronjohnson</p>
+						<p class="myname">
+							<%= image_tag "aj.png", size: "30x45" %>	
+						</p>
 					</div>
 					</div>
 					<div class="span5">
@@ -29,13 +31,13 @@
 		        </div>
 		        <p class="side-title">Recent Posts</p>
 						<% for post in @recent_posts %>
-							<p><%= link_to post.title, post %></p>
+							<p><%= link_to post.title, post, class: "gray-link" %></p>
 						<% end %>
 						<br><br>
 						<p class="side-title">Categories</p>
 						<% for category in @categories %>
 							<% if category.posts.count > 0 %>
-							<p><%= link_to category.name, { action: 'category', id: category.id } %> <span class="blue-text">(<%= category.posts.where(published: true).count %>)</span></p>
+							<p><%= link_to category.name, { action: 'category', id: category.id }, class: "gray-link" %> <span class="blue-text">(<%= category.posts.where(published: true).count %>)</span></p>
 							<% end %>
 						<% end %>
 						
@@ -44,13 +46,13 @@
 						<% if @published_posts.present? %>
 						<% for post in @published_posts %>
 						<div class="post-container">
-							<p class="p-title"><%= link_to post.title, post, class: "post-link" %></p>
-							<p class="p-detail"><em>Posted on <%= post.publish_on.strftime("%b %-d, %Y") %> | 
-								Archived in <%= post.categories.collect { |category| link_to category.name, {action: 'category', id: category.id} }.join(", ").html_safe %></em></p>
+							<p class="p-title"><%= link_to post.title, post, class: "orange-link" %></p>
+							<p class="p-detail"><em>Posted on <span class="dark"><%= post.publish_on.strftime("%B %-d, %Y") %></span> | 
+								Archived in <%= post.categories.collect { |category| link_to category.name, {action: 'category', id: category.id}, class: "dark-link" }.join(", ").html_safe %></em></p>
 							<div class="editor-text">
 								<%= sanitize truncate(post.body, length: 300, separator: ' ') %>
 								<% if post.body.length > 300 %>
-								<p><%= link_to "Read More", post %>
+								<p><em><%= link_to "Read More", post, class: "dark-link" %></em>
 								<% end %> 
 							</div>
 							
