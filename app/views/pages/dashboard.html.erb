@@ -17,16 +17,16 @@
 					<% for post in @posts %>
 					<tr>
 						<td>
-							<h4><%= link_to post.title, edit_post_path(post) %></h4>
+							<h4><%= link_to post.title, edit_post_path(post), class: "dark-link" %></h4>
 							<small>Created on <%= post.created_at.strftime("%-m-%-d-%Y") %> | 
-							<%= link_to "Edit", edit_post_path(post) %> | 
-							<%= link_to "Delete", post, confirm: "Are you sure?", method: :delete %></small>
+							<%= link_to "Edit", edit_post_path(post), class: "green-link" %> | 
+							<%= link_to "Delete", post, confirm: "Are you sure?", method: :delete, class: "green-link" %></small>
 
 						</td>
 						<td>
 							<% if post.publish_on.present? %>
 								<%= post.publish_on.strftime("%-m-%-d-%Y") %><br>
-								<small>Archived in <%= post.categories.collect { |category| category.name }.join(", ") %></small>
+								<small>Archived in <span class="dark"><em><%= post.categories.collect { |category| category.name }.join(", ") %></em></span></small>
 							<% else %>
 								Draft
 							<% end %>
